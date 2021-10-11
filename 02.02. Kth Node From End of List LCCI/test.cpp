@@ -1,11 +1,13 @@
-#include "test.h"
+#include "test.hpp"
 using namespace std;
 
 int main() {
-    string input;
+    string str;
     int k;
-    cin >> input >> k;
-    auto vet = String2Vector(input);
+    auto input = ReadInputFile("02.02. Kth Node From End of List LCCI\\test.txt");
+    str = input[0];
+    k = atoi(input[1].c_str());
+    auto vet = String2Vector(str);
     
     ListNode* head = Vector2List(vet);
     Solution sl;

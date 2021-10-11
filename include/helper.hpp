@@ -40,3 +40,26 @@ std::vector<int> String2Vector(std::string str) {
     auto res = StringVector2T(arr);
     return res;
 }
+
+std::vector<std::string> ReadInputFile(std::string path="./test.txt") {
+    std::ifstream file(path);
+    std::string temp;
+    if (!file.is_open()) {
+        std::cout << "read file error" << std::endl;
+        return {};
+    }
+    std::vector<std::string> res;
+    while (getline(file, temp)) {
+        res.push_back(temp);
+    }
+    file.close();
+    return res;
+}
+
+void PrintResultBool(bool res) {
+    if (res) {
+        std::cout << "true" << std::endl;
+    } else {
+        std::cout << "false" << std::endl;
+    }
+}

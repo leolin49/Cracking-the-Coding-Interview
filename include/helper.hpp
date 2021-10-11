@@ -1,6 +1,6 @@
 #include "bits/stdc++.h"
 
-std::vector<int> StringVector2T(std::vector<std::string> vet) {
+std::vector<int> StringVector2IntVector(std::vector<std::string> vet) {
     std::stringstream ss;
     std::vector<int> res;
     for (const auto& val : vet) {
@@ -37,7 +37,7 @@ std::vector<int> String2Vector(std::string str) {
     // [1,2,3,4,5]
     int len = str.length();
     auto arr = Split(str.substr(1, len - 2), ",");
-    auto res = StringVector2T(arr);
+    auto res = StringVector2IntVector(arr);
     return res;
 }
 

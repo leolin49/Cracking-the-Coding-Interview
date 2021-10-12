@@ -66,6 +66,11 @@ public:
     }
 };
 
+/**
+ * 翻转后半部分链表，再与前半部分比较
+ * 时间复杂度 O(n)
+ * 空间复杂度 O(1)
+ */
 class Solution_3 {
 public:
     bool isPalindrome(ListNode* head) {

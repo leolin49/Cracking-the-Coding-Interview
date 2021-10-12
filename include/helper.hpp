@@ -41,6 +41,33 @@ std::vector<int> String2Vector(std::string str) {
     return res;
 }
 
+std::vector<std::vector<int>> String2Vector2D(std::string str) {
+    // std::regex e("^\\[(\\[([\\d],)+[0-9]\\],)+\\[([\\d],)+[0-9]\\]\\]$");
+    // [[1,2,3],[4,5,6],[7,8,9]]
+    str.insert(str.size() - 1, ",");
+    // [[1,2,3],[4,5,6],[7,8,9],]
+    str = str.substr(1, str.length() - 2);
+    // [1,2,3],[4,5,6],[7,8,9],
+    std::regex e("(\\[([\\d]+,)+[\\d]+\\],)");
+    std::sregex_iterator pos(str.cbegin(), str.cend(), e);
+    // std::smatch m;
+    std::sregex_iterator end;
+    if (pos == end) {
+        std::cout << "regex match failed!" << std::endl;
+        return {};
+    }
+    std::vector<std::vector<int>> res;
+    for (; pos != end; ++pos) {
+        std::cout << "Matched: " << pos->str(0) << std::endl;
+        std::cout << "user name: " << pos->str(1) << std::endl;
+        std::cout << "domain: " << pos->str(2) << std::endl;
+        std::string arrStr = pos->str(0);
+        arrStr = arrStr.substr(0, arrStr.size() - 1);
+        res.emplace_back(String2Vector(arrStr));
+    }
+    return res;
+}
+
 std::vector<std::string> ReadInputFile(std::string path="./test.txt") {
     std::ifstream file(path);
     std::string temp;
@@ -61,5 +88,15 @@ void PrintResultBool(bool res) {
         std::cout << "true" << std::endl;
     } else {
         std::cout << "false" << std::endl;
+    }
+}
+
+template<class T>
+void PrintMatrix(std::vector<std::vector<T>> matrix) {
+    for (auto arr : matrix) {
+        for (auto val : arr) {
+            std::cout << val << " ";
+        }
+        std::cout << std::endl;
     }
 }

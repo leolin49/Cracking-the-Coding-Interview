@@ -58,9 +58,6 @@ std::vector<std::vector<int>> String2Vector2D(std::string str) {
     }
     std::vector<std::vector<int>> res;
     for (; pos != end; ++pos) {
-        std::cout << "Matched: " << pos->str(0) << std::endl;
-        std::cout << "user name: " << pos->str(1) << std::endl;
-        std::cout << "domain: " << pos->str(2) << std::endl;
         std::string arrStr = pos->str(0);
         arrStr = arrStr.substr(0, arrStr.size() - 1);
         res.emplace_back(String2Vector(arrStr));
